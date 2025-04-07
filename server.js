@@ -5,6 +5,10 @@ const VERIFY_TOKEN = 'EAAGXvVicjR4BO2NPx0ZABtUbdzJHWZAf0Ud47kXzgkZBPbZClaqYEz19o
 
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Node.js app!');
+});
+
 // For verification
 app.get('/webhook', (req, res) => {
   const mode = req.query['hub.mode'];
