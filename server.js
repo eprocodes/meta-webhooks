@@ -33,6 +33,7 @@ app.post('/webhook', (req, res) => {
   if (body.object === 'page') {
     body.entry.forEach(entry => {
       const webhookEvent = entry.messaging[0];
+      latestMessage = entry.messaging[0];
       console.log('New message:', webhookEvent);
     });
     res.status(200).send('EVENT_RECEIVED');
