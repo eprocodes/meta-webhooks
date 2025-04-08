@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
-const VERIFY_TOKEN = 'EAAGXvVicjR4BO2NPx0ZABtUbdzJHWZAf0Ud47kXzgkZBPbZClaqYEz19o1XjggIQgjWIpbm9HIAchPXWwhwaZAX2JyE72NJa2wqqKY45soZBtOFfgj4dPVwKvVO3WW3IFP8VVH5aDfvHMlj8PGabgAFEUNBIM6EA6SUAKUNGQ3twpKOEsZAI0gpdsFZCL0zjZCcMqUAZDZD';
+const VERIFY_TOKEN = 'EAAGXvVicjR4BO2RaIA7GPHZBBGign96pUUXkDZATKHQEA6Pf3Svj8qXK5Oo0RZApfxKw4fbXjBXdh8DhD3A7UYYS6s2Yl8UyXf6Iv5c6XweXCJnAe1L4dvTguVh4kTOOfRhjqSGRYKqbVsQpZCUZBOF63yplVKmMXVEi4YJrMHRy6QBwk7Fa1qcrm5ISeY169TgZDZD';
 let latestMessage = null; // Store latest webhook message
 
 app.use(cors());
