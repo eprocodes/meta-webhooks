@@ -32,9 +32,14 @@ app.post('/webhook', (req, res) => {
   latestMessage = req.body; // Save to memory (or DB if needed)
   if (body.object === 'page') {
     body.entry.forEach(entry => {
-      const webhookEvent = entry.messaging[0];
-      latestMessage = entry.messaging[0];
-      console.log('New message:', webhookEvent);
+      entry.messaging.forEach(event => {
+        if (event.message && event.message.text) {
+          console.log("✅ Received message:", event.message.text);
+          latestMessage = event.message.text;
+        } else {
+          console.log("ℹ️ Non-message event:", event);
+        }
+      });
     });
     res.status(200).send('EVENT_RECEIVED');
   } else {
