@@ -51,7 +51,7 @@ app.post('/webhook', (req, res) => {
 
 // Angular frontend fetches latest message
 app.get('/latest-message', (req, res) => {
-  res.json({ message: latestMessage },{fullmessage: fullMessageReceived});
+  res.json({ message: latestMessage, fullmessage: fullMessageReceived});
 });
 
 app.listen(3000, () => console.log('Webhook server running on port 3000'));
