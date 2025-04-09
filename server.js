@@ -4,7 +4,6 @@ const app = express();
 const cors = require('cors');
 const VERIFY_TOKEN = 'EAAGXvVicjR4BO2RaIA7GPHZBBGign96pUUXkDZATKHQEA6Pf3Svj8qXK5Oo0RZApfxKw4fbXjBXdh8DhD3A7UYYS6s2Yl8UyXf6Iv5c6XweXCJnAe1L4dvTguVh4kTOOfRhjqSGRYKqbVsQpZCUZBOF63yplVKmMXVEi4YJrMHRy6QBwk7Fa1qcrm5ISeY169TgZDZD';
 let latestMessage = null; // Store latest webhook message
-let fullMessageReceived = null;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -33,7 +32,6 @@ app.post('/webhook', (req, res) => {
   latestMessage = req.body; // Save to memory (or DB if needed)
   if (body.object === 'page') {
     body.entry.forEach(entry => {
-      fullMessageReceived = entry;
       entry.messaging.forEach(event => {
         if (event.message && event.message.text) {
           console.log("✅ Received message:", event.message.text);
@@ -51,7 +49,7 @@ app.post('/webhook', (req, res) => {
 
 // Angular frontend fetches latest message
 app.get('/latest-message', (req, res) => {
-  res.json({ message: latestMessage, fullmessage: fullMessageReceived});
+  res.json({ message: latestMessage});
 });
 
 app.listen(3000, () => console.log('Webhook server running on port 3000'));
